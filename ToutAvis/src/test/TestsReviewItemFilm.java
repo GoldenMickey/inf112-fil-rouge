@@ -79,7 +79,6 @@ public class TestsReviewItemFilm {
 
 	//TEST OK
 	public static int reviewItemFilmOKTest (SocialNetwork sn, String pseudo, String pwd, String titre, float note, String commentaire, String idTest){
-		int nbMembres = sn.nbMembers();
 		try{
 			sn.reviewItemFilm(pseudo, pwd, titre, note, commentaire);
 			return 0;
@@ -92,9 +91,6 @@ public class TestsReviewItemFilm {
 	}
 	
 	public static void main(String[] args) {
-		int nbLivres = 0;
-		int nbFilms = 0;
-
 		int nbTests = 0;
 		int nbErreurs = 0;
 		

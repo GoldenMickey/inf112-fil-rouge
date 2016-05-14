@@ -298,7 +298,19 @@ public class SocialNetwork {
 	 * (une liste vide si aucun item ne correspond) 
 	 */
 	public LinkedList <String> consultItems(String nom) throws BadEntry {
-		return new LinkedList <String> ();
+		LinkedList <String> results = new LinkedList <String> ();
+		
+		for(Film f : films) {
+			if(f.titre.equals(nom))
+				results.add(f.toString());
+		}
+		
+		for(Book b : books) {
+			if(b.titre.equals(nom))
+				results.add(b.toString());
+		}
+		
+		return results;
 	}
 
 
@@ -340,10 +352,6 @@ public class SocialNetwork {
 			throw new BadEntry("No value given for titre or shorter than 1 character");
 		}
 		
-		if(titre == null) {
-			throw new BadEntry("No value given for genre");
-		}
-		
 		if(commentaire == null) {
 			throw new BadEntry("No value given for genre");
 		}
@@ -358,11 +366,11 @@ public class SocialNetwork {
 		float sommeNote = 0.0f;
 		int nbReviews = 0;
 		int alreadyReviewed = 0;
-		int fExists = 0;
+		Film filmToReview = null;
 		
 		for (Film f : films) { //Parcours les films
 			if(f.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) {
-				fExists = 1;
+				filmToReview = f;
 				for(Review r : filmReviews) {
 					if(f.titre.trim().toLowerCase().equals(r.titre.trim().toLowerCase())) { //Une review de ce film existe
 						if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Une review de ce film existe deja par cet user
@@ -378,7 +386,7 @@ public class SocialNetwork {
 			}
 	    }
 		
-		if(fExists == 0)
+		if(filmToReview == null)
 			throw new NotItem("Not film title");
 		
 		if(alreadyReviewed == 0) //User didn't review this film
@@ -386,7 +394,8 @@ public class SocialNetwork {
 			nbReviews++;
 			sommeNote = sommeNote + note;
 		
-		return (sommeNote / nbReviews);
+		filmToReview.noteMoyenne = (sommeNote / nbReviews);
+		return filmToReview.noteMoyenne;
 	}
 
 
@@ -416,7 +425,62 @@ public class SocialNetwork {
 	 * @return la note moyenne des notes sur ce livre
 	 */
 	public float reviewItemBook(String pseudo, String password, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
-		return 0.0f;
+		if(pseudo == null || pseudo.trim().length() < 1) {
+			throw new BadEntry("No value given for pseudo or shorter than 1 character");
+		}
+		
+		if(password == null || password.trim().length() < 4) {
+			throw new BadEntry("No value given for password or shorter than 4 characters");
+		}
+		
+		if(titre == null || titre.trim().length() < 1) {
+			throw new BadEntry("No value given for titre or shorter than 1 character");
+		}
+		
+		if(commentaire == null) {
+			throw new BadEntry("No value given for genre");
+		}
+		
+		if(note < 0.0f || note > 5.0f) {
+			throw new BadEntry("Negative duree");
+		}
+		
+		if(memberExists(pseudo, password) == null)
+			throw new NotMember("Wrong pseudo and/or password or Member doesn't exists");
+
+		float sommeNote = 0.0f;
+		int nbReviews = 0;
+		int alreadyReviewed = 0;
+		Book bookToReview = null;
+		
+		for (Book b : books) { //Parcours les films
+			if(b.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) {
+				bookToReview = b;
+				for(Review r : bookReviews) {
+					if(b.titre.trim().toLowerCase().equals(r.titre.trim().toLowerCase())) { //Une review de ce film existe
+						if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Une review de ce film existe deja par cet user
+							r.note = note;
+							r.commentaire = commentaire;
+							alreadyReviewed = 1;
+						}
+						
+						nbReviews++;
+						sommeNote = sommeNote + r.note;
+					}
+				}
+			}
+	    }
+		
+		if(bookToReview == null)
+			throw new NotItem("Not film title");
+		
+		if(alreadyReviewed == 0) //User didn't review this film
+			bookReviews.add(new Review(pseudo, titre, note, commentaire));
+			nbReviews++;
+			sommeNote = sommeNote + note;
+
+		bookToReview.noteMoyenne = (sommeNote / nbReviews);
+		return bookToReview.noteMoyenne;
 	}
 
 
@@ -426,11 +490,6 @@ public class SocialNetwork {
 	 * @return la chaîne de caractères représentation textuelle du <i>SocialNetwork</i> 
 	 */
 	public String toString() {
-		return "";
+		return "Ce SocialNetwork est constitué de "+this.nbFilms()+" films, "+this.nbBooks()+" livres et "+(this.nbReviews("film")+this.nbReviews("book"))+" opinions données par "+this.nbMembers()+" membres.";
 	}
-
-
-
-
-
 }

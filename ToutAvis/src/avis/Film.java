@@ -6,6 +6,7 @@ public class Film {
 	public String realisateur;
 	public String scenariste;
 	public int duree;
+	public float noteMoyenne;
 	
 	public Film(String titre, String genre, String realisateur, String scenariste, int duree) {
 		this.titre = titre;
@@ -13,5 +14,12 @@ public class Film {
 		this.realisateur = realisateur;
 		this.scenariste = scenariste;
 		this.duree= duree;
+	}
+	
+	public String toString() {
+		String noteString = "";
+		if(this.noteMoyenne > 0.0f && this.noteMoyenne < 5.0f)
+			noteString = "\nNote : "+this.noteMoyenne;
+		return "Item type : Film\nTitre : "+this.titre+"\nGenre : "+this.genre+"\nRéalisateur : "+this.realisateur+"\nScenariste : "+this.scenariste+"\nDurée : "+this.duree+" minutes"+noteString;
 	}
 }
