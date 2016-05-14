@@ -1,0 +1,7 @@
+Stratégie de validation de tests - Portecope Florence, Halley Lenny
+
+La validation de nos tests prend en compte tous les cas d'erreur possibles d'une méthode. Pour se faire, ces cas sont étudiés et une technique de test adaptée est appliquée à chacun. 
+
+On s'attache à faire un premier test d'un cas de fonctionnement normal de la méthode, puis une série de tests visant à vérifier que la méthode concernée réagit correctement aux cas erreurs.
+
+Les cas d'erreur de la méthode sont répertoriés et leur résultat à nos test sont inscrit dans une fiche de validation.
