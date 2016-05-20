@@ -298,6 +298,11 @@ public class SocialNetwork {
 	 * (une liste vide si aucun item ne correspond) 
 	 */
 	public LinkedList <String> consultItems(String nom) throws BadEntry {
+
+		if(nom == null || nom.trim().length() < 1) {
+			throw new BadEntry("No value given for search string or shorter than 1 character");
+		}
+		
 		LinkedList <String> results = new LinkedList <String> ();
 		
 		for(Film f : films) {

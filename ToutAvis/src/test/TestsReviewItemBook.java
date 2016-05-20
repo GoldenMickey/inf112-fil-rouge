@@ -164,7 +164,7 @@ public class TestsReviewItemBook {
 		System.out.println(sn);
 
 		// bilan du test de addMember
-		System.out.println("TestsAddMember :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
+		System.out.println("TestsReviewItemBook :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
 
 	}
 }
