@@ -18,8 +18,8 @@ public class Film {
 	
 	public String toString() {
 		String noteString = "\n";
-		if(this.noteMoyenne > 0.0f && this.noteMoyenne < 5.0f)
-			noteString = " ; Note : "+this.noteMoyenne+"\n";
+		if(this.noteMoyenne > 0.0f && this.noteMoyenne <= 5.0f)
+			noteString = " ; Note : "+String.format("%.2f", this.noteMoyenne)+"\n";
 		return "Item type : Film\nTitre : "+this.titre+" ; Genre : "+this.genre+" ; Réalisateur : "+this.realisateur+" ; Scenariste : "+this.scenariste+" ; Durée : "+this.duree+" minutes"+noteString;
 	}
 }

@@ -1,14 +1,11 @@
 package test;
 
-import java.util.LinkedList;
-
 import avis.SocialNetwork;
 
 import exception.BadEntry;
 import exception.ItemFilmAlreadyExists;
 import exception.ItemBookAlreadyExists;
 import exception.MemberAlreadyExists;
-import exception.NotItem;
 import exception.NotMember;
 
 /** 

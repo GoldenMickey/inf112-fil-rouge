@@ -9,9 +9,10 @@ public class Review {
 	public float note;
 	public String commentaire;
 	public String pseudo;
-	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	String date;
-	String reviewDate = null;
+	private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	public String date;
+	public String reviewDate = null;
+	public float noteMoyenne = 0.0f;
 	
 	public Review(String pseudo, String titre, float note, String commentaire) {
 		this.note = note;
@@ -33,6 +34,9 @@ public class Review {
 	/**
 	 */
 	public String toString(){
-		return "Review de :"+this.pseudo+" sur "+this.titre+", Note : "+this.note+", Commentaire : "+this.commentaire;
+		String noteString = "\n";
+		if(this.noteMoyenne > 0.0f && this.noteMoyenne <= 5.0f)
+			noteString = " ; Ce commentaire a été évalué : "+String.format("%.2f", this.noteMoyenne)+"\n";
+		return "Review de :"+this.pseudo+" sur "+this.titre+", Note : "+this.note+", Commentaire : "+this.commentaire+noteString;
 	}
 }

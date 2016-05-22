@@ -366,13 +366,15 @@ public class SocialNetwork {
 			throw new BadEntry("Negative duree");
 		}
 		
-		if(memberExists(pseudo, password) == null)
+		Member user = memberExists(pseudo, password);
+		if(user == null)
 			throw new NotMember("Wrong pseudo and/or password or Member doesn't exists");
 
 		float sommeNote = 0.0f;
 		int nbReviews = 0;
 		int alreadyReviewed = 0;
 		Film filmToReview = null;
+		float sommeKarmas = 0;
 		
 		for (Film f : films) { //Parcours les films
 			if(f.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) {
@@ -384,9 +386,11 @@ public class SocialNetwork {
 							r.commentaire = commentaire;
 							alreadyReviewed = 1;
 						}
-						
+					
 						nbReviews++;
-						sommeNote = sommeNote + r.note;
+						float uKarma = getUserKarma(pseudo);
+						sommeNote = sommeNote + (r.note * uKarma); //Pondération par le karma
+						sommeKarmas = sommeKarmas + uKarma;
 					}
 				}
 			}
@@ -395,16 +399,17 @@ public class SocialNetwork {
 		if(filmToReview == null)
 			throw new NotItem("Not film title");
 		
-		if(alreadyReviewed == 0) //User didn't review this film
+		if(alreadyReviewed == 0) { //User didn't review this film
 			filmReviews.add(new Review(pseudo, titre, note, commentaire));
 			nbReviews++;
-			sommeNote = sommeNote + note;
+			sommeNote = sommeNote + (note * getUserKarma(pseudo));
+		}
 		
-		filmToReview.noteMoyenne = (sommeNote / nbReviews);
+		user.karma = getUserKarma(pseudo);
+		
+		filmToReview.noteMoyenne = (sommeNote / (nbReviews + sommeKarmas));
 		return filmToReview.noteMoyenne;
 	}
-
-
 
 	/**
 	 * Donner son opinion sur un item livre.
@@ -451,46 +456,52 @@ public class SocialNetwork {
 			throw new BadEntry("Negative duree");
 		}
 		
-		if(memberExists(pseudo, password) == null)
+		Member user = memberExists(pseudo, password);
+		if(user == null)
 			throw new NotMember("Wrong pseudo and/or password or Member doesn't exists");
 
 		float sommeNote = 0.0f;
 		int nbReviews = 0;
 		int alreadyReviewed = 0;
 		Book bookToReview = null;
+		float sommeKarmas = 0;
 		
 		for (Book b : books) { //Parcours les films
-			if(b.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) {
+			if(b.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) { //Film trouvé par titre
 				bookToReview = b;
-				for(Review r : bookReviews) {
-					if(b.titre.trim().toLowerCase().equals(r.titre.trim().toLowerCase())) { //Une review de ce film existe
-						if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Une review de ce film existe deja par cet user
+				for(Review r : bookReviews) { //Parcours les reviews
+					if(b.titre.trim().toLowerCase().equals(r.titre.trim().toLowerCase())) { //Une review de ce film existe (meme titre)
+						if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Une review de ce film existe deja par cet user (meme pseudo)
+							//Mise à jour de des infos de la review
 							r.note = note;
 							r.commentaire = commentaire;
 							alreadyReviewed = 1;
 						}
 						
 						nbReviews++;
-						sommeNote = sommeNote + r.note;
+						float uKarma = getUserKarma(r.pseudo);
+						sommeNote = sommeNote + (r.note * uKarma);
+						sommeKarmas = sommeKarmas + uKarma;
 					}
 				}
 			}
 	    }
 		
 		if(bookToReview == null)
-			throw new NotItem("Not film title");
+			throw new NotItem("Not a book title");
 		
 		if(alreadyReviewed == 0) { //User didn't review this film
 			bookReviews.add(new Review(pseudo, titre, note, commentaire));
 			nbReviews++;
-			sommeNote = sommeNote + note;
+			sommeNote = sommeNote + (note * getUserKarma(pseudo));
 		}
 		
-		bookToReview.noteMoyenne = (sommeNote / nbReviews);
+		user.karma = getUserKarma(pseudo);
+		bookToReview.noteMoyenne = (sommeNote / (nbReviews+sommeKarmas));
 		return bookToReview.noteMoyenne;
 	}
 	
-	public void reviewOpinion(String pseudo, String password, String date, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
+	public float reviewOpinion(String pseudo, String password, String date, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
 		if(pseudo == null || pseudo.trim().length() < 1) {
 			throw new BadEntry("No value given for pseudo or shorter than 1 character");
 		}
@@ -546,6 +557,10 @@ public class SocialNetwork {
 			nbReviews++;
 			sommeNote = sommeNote + note;
 		}
+		
+
+		opinionToReview.noteMoyenne = (sommeNote / nbReviews);
+		return opinionToReview.noteMoyenne;
 	}
 	
 	private float getUserKarma(String pseudo) {
@@ -565,7 +580,10 @@ public class SocialNetwork {
 			karma = karma + r.note;
 		}
 		
-		return karma/reviews.size();
+		if(reviews.size() == 1)
+			return karma = 1;
+		else
+			return karma/reviews.size();
 	}
 
 	public LinkedList <Review> getFilmReviews(String titre) {

@@ -29,7 +29,7 @@ public class Member {
 		this.pseudo = pseudo;
 		this.password = password;
 		this.profil = profil;
-		this.karma = 0.0f;
+		this.karma = 1;
 	}
 
 			

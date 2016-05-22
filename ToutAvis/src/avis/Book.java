@@ -16,8 +16,8 @@ public class Book {
 	
 	public String toString() {
 		String noteString = "\n";
-		if(this.noteMoyenne > 0.0f && this.noteMoyenne < 5.0f)
-			noteString = " ; Note : "+this.noteMoyenne+"\n";
+		if(this.noteMoyenne > 0.0f && this.noteMoyenne <= 5.0f)
+			noteString = " ; Note : "+String.format("%.2f", this.noteMoyenne)+"\n";
 		return "Item type : Livre\nTitre : "+this.titre+" ; Genre : "+this.genre+" ; Auteur : "+this.auteur+" ; Nombre de pages : "+this.nbPages+noteString;
 	}
 }
