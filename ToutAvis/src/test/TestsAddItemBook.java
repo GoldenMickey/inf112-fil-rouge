@@ -144,7 +144,7 @@ public class TestsAddItemBook {
 		nbTests++;
 		nbErreurs += addItemBookBadEntryTest ( sn, "Flo", "12345", "Game of Thrones 1", "Fiction/Porno", null, 5, "1.6", "L'ajout d'un book dont l'auteur n'est pas instancié");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Flo", "12345", "Game of Thrones 1", "Fiction/Porno", "Georges R.R Martin", -5, "1.6", "L'ajout d'un book dont le nb de pages est négatif est accepté");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Flo", "12345", "Game of Thrones 1", "Fiction/Porno", "Georges R.R Martin", 0, "1.6", "L'ajout d'un book dont le nb de pages est inférieur à 1 est accepté");
 
 		// <=> fiche numéro 2
 		// ajout de 2 books avec entrées "correctes"

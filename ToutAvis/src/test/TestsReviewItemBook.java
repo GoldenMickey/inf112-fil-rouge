@@ -150,9 +150,18 @@ public class TestsReviewItemBook {
 		// ajout de 3 membres avec entrées "correctes"
 
 		nbTests++;
-		nbErreurs += reviewItemBookOKTest (sn, "Paul", "paul", "La vie de Florence", 4.8f, "Emouvant, plein de passion et de dramaturgie", "Test OK 11");
+		nbErreurs += reviewItemBookOKTest (sn, "Paul", "paul", "La vie de Florence", 1.5f, "Emouvant, plein de passion et de dramaturgie", "2.1a");
 		nbTests++;
-		nbErreurs += reviewItemBookOKTest (sn, "Antoine", "antoine", "La vie de Florence", 3.9f, "grand amoureux de la littérature","2.1b");
+		nbErreurs += reviewItemBookOKTest (sn, "Paul", "paul", "La vie de Florence", 3.8f, "grand amoureux de la littérature","2.1b");
+		nbTests++;
+		nbErreurs += reviewItemBookOKTest (sn, "Antoine", "antoine", "La vie de Florence", 2.5f, "Magnifique","2.1c");
+		
+		try {
+			System.out.println(sn.consultItems("la vie de flo"));
+		} catch (BadEntry e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		nbTests++;
 		if (nbReviews != sn.nbReviews("book")) {

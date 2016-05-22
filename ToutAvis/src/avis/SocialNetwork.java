@@ -42,6 +42,7 @@ public class SocialNetwork {
 	LinkedList <Book> books;
 	LinkedList <Review> filmReviews;
 	LinkedList <Review> bookReviews;
+	LinkedList <Review> opinionReviews;
 
 	/**
 	 * constructeur de <i>SocialNetwok</i> 
@@ -187,8 +188,8 @@ public class SocialNetwork {
 			throw new BadEntry("No value given for scenariste");
 		}
 		
-		if(duree < 0) {
-			throw new BadEntry("Negative duree");
+		if(duree < 1) {
+			throw new BadEntry("Unvalid duree");
 		}
 		
 		if(memberExists(pseudo, password) == null)
@@ -268,7 +269,7 @@ public class SocialNetwork {
 			throw new BadEntry("No value given for auteur");
 		}
 		
-		if(nbPages < 0) {
+		if(nbPages < 1) {
 			throw new BadEntry("Negative value for nbPages");
 		}
 
@@ -306,12 +307,12 @@ public class SocialNetwork {
 		LinkedList <String> results = new LinkedList <String> ();
 		
 		for(Film f : films) {
-			if(f.titre.equals(nom))
+			if(f.titre.trim().toLowerCase().contains(nom.trim().toLowerCase()))
 				results.add(f.toString());
 		}
 		
 		for(Book b : books) {
-			if(b.titre.equals(nom))
+			if(b.titre.trim().toLowerCase().contains(nom.trim().toLowerCase()))
 				results.add(b.toString());
 		}
 		
@@ -479,13 +480,114 @@ public class SocialNetwork {
 		if(bookToReview == null)
 			throw new NotItem("Not film title");
 		
-		if(alreadyReviewed == 0) //User didn't review this film
+		if(alreadyReviewed == 0) { //User didn't review this film
 			bookReviews.add(new Review(pseudo, titre, note, commentaire));
 			nbReviews++;
 			sommeNote = sommeNote + note;
-
+		}
+		
 		bookToReview.noteMoyenne = (sommeNote / nbReviews);
 		return bookToReview.noteMoyenne;
+	}
+	
+	public void reviewOpinion(String pseudo, String password, String date, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
+		if(pseudo == null || pseudo.trim().length() < 1) {
+			throw new BadEntry("No value given for pseudo or shorter than 1 character");
+		}
+		
+		if(password == null || password.trim().length() < 4) {
+			throw new BadEntry("No value given for password or shorter than 4 characters");
+		}
+		
+		if(date == null || date.trim().length() < 1) {
+			throw new BadEntry("No value given for titre or shorter than 1 character");
+		}
+		
+		if(commentaire == null) {
+			throw new BadEntry("No value given for genre");
+		}
+		
+		if(note < 0.0f || note > 5.0f) {
+			throw new BadEntry("Negative duree");
+		}
+		
+		Member user = memberExists(pseudo, password);
+		if(user == null)
+			throw new NotMember("Wrong pseudo and/or password or Member doesn't exists");
+
+		float sommeNote = 0.0f;
+		int nbReviews = 0;
+		int alreadyReviewed = 0;
+		Review opinionToReview = null;
+		
+		for (Review review : filmReviews) { //Parcours les opinions de film
+			if(review.date.equals(date) && review.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) { //La review est identifiée par comp des dates et du film correspondant
+				opinionToReview = review;
+				for(Review r : opinionReviews) { //Parcours les reviews d'opinion
+					if(opinionToReview.date.equals(r.reviewDate) && review.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) { //Une review de cette opinion existe
+						if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Une review de cette opinion existe deja par cet user
+							r.note = note;
+							r.commentaire = commentaire;
+							alreadyReviewed = 1;
+						}
+						
+						nbReviews++;
+						sommeNote = sommeNote + r.note;
+					}
+				}
+			}
+	    }
+		
+		if(opinionToReview == null)
+			throw new NotItem("Not opinion title");
+		
+		if(alreadyReviewed == 0) { //User didn't review this opinion
+			opinionReviews.add(new Review(pseudo, titre, opinionToReview.date, note, commentaire));
+			nbReviews++;
+			sommeNote = sommeNote + note;
+		}
+	}
+	
+	private float getUserKarma(String pseudo) {
+		LinkedList <Review> reviews = new LinkedList <Review>();
+		for(Review r : filmReviews) {
+			if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase()))
+				reviews.add(r);
+		}
+		
+		for(Review r : bookReviews) {
+			if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase()))
+				reviews.add(r);
+		}
+		
+		float karma = 0;
+		for(Review r : reviews) {
+			karma = karma + r.note;
+		}
+		
+		return karma/reviews.size();
+	}
+
+	public LinkedList <Review> getFilmReviews(String titre) {
+		LinkedList <Review> results = new LinkedList <Review>();
+		
+		for(Review r : filmReviews) {
+			if(r.titre == titre)
+				results.add(r);
+		}
+		
+		return results;
+	}
+	
+	public LinkedList <Review> getBookReviews(String titre) {
+		LinkedList <Review> results = new LinkedList <Review>();
+		
+		for(Review r : bookReviews) {
+			if(r.titre == titre)
+				results.add(r);
+		}
+		
+		return results;
 	}
 
 

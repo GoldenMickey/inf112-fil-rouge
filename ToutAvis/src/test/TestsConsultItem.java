@@ -69,14 +69,14 @@ public class TestsConsultItem {
 		}
 		
 		try {
-			sn.addItemFilm("Paul", "paul", "La vie de Florence", "drame", "Portecop Florence", "Portecop Florence", 4);
+			sn.addItemFilm("Paul", "paul", "La Peste", "drame", "Portecop Florence", "Portecop Florence", 4);
 		} catch (BadEntry | ItemFilmAlreadyExists | NotMember e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		try {
-			sn.addItemBook("Paul", "paul", "La vie de Florence", "fiction", "Portecop Florence", 6);
+			sn.addItemBook("Paul", "paul", " la peste ira bien", "fiction", "Portecop Florence", 6);
 		} catch (BadEntry | ItemBookAlreadyExists | NotMember e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -92,7 +92,7 @@ public class TestsConsultItem {
 		// ajout de 3 membres avec entrées "correctes"
 
 		nbTests++;
-		nbErreurs += consultItemOKTest(sn, "La vie de Florence", "Test OK");
+		nbErreurs += consultItemOKTest(sn, "La PeSte", "Test OK");
 
 		// ce n'est pas du test, mais cela peut "rassurer"...
 		System.out.println(sn);

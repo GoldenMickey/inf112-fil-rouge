@@ -147,7 +147,7 @@ public class TestsAddItemFilm {
 		nbTests++;
 		nbErreurs += addItemFilmBadEntryTest ( sn, "Flo", "12345", "Game of Thrones 1", "Fiction/Porno", "Johnny Depp", null, 5, "1.6", "L'ajout d'un film dont le scenariste n'est pas instancié");
 		nbTests++;
-		nbErreurs += addItemFilmBadEntryTest ( sn, "Flo", "12345", "Game of Thrones 1", "Fiction/Porno", "Johnny Depp", "Georges R.R Martin", -5, "1.6", "L'ajout d'un film dont la durée est negative est accepté");
+		nbErreurs += addItemFilmBadEntryTest ( sn, "Flo", "12345", "Game of Thrones 1", "Fiction/Porno", "Johnny Depp", "Georges R.R Martin", 0, "1.6", "L'ajout d'un film dont la durée est inférieure à 1 est accepté");
 
 		// <=> fiche numéro 2
 		// ajout de 2 films avec entrées "correctes"

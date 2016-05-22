@@ -15,6 +15,11 @@ public class Member {
 	 * @uml.property  name="profil"
 	 */
 	public String profil;
+
+	/**
+	 * @uml.property  name="karma"
+	 */
+	public float karma;
 	
 	
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -24,6 +29,7 @@ public class Member {
 		this.pseudo = pseudo;
 		this.password = password;
 		this.profil = profil;
+		this.karma = 0.0f;
 	}
 
 			

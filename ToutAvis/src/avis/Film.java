@@ -17,9 +17,9 @@ public class Film {
 	}
 	
 	public String toString() {
-		String noteString = "";
+		String noteString = "\n";
 		if(this.noteMoyenne > 0.0f && this.noteMoyenne < 5.0f)
-			noteString = "\nNote : "+this.noteMoyenne;
-		return "Item type : Film\nTitre : "+this.titre+"\nGenre : "+this.genre+"\nRéalisateur : "+this.realisateur+"\nScenariste : "+this.scenariste+"\nDurée : "+this.duree+" minutes"+noteString;
+			noteString = " ; Note : "+this.noteMoyenne+"\n";
+		return "Item type : Film\nTitre : "+this.titre+" ; Genre : "+this.genre+" ; Réalisateur : "+this.realisateur+" ; Scenariste : "+this.scenariste+" ; Durée : "+this.duree+" minutes"+noteString;
 	}
 }
