@@ -43,7 +43,7 @@ public class TestSocialNetwork {
 
 		nbTests++;
 		nbErreurs += TestsAddItemBook.addItemBookOKTest(sn, "Richard", "richard", "Man of the year", "fiction", "Florence Portecop", 40, "0.4");
-
+/**
 		// Boucle rendement - Ajout d'utilisateurs
 		for(int i=0; i<550; i++) {
 			nbTests++;
@@ -58,7 +58,7 @@ public class TestSocialNetwork {
 			else
 				nbErreurs += TestsAddItemBook.addItemBookOKTest(sn, "Paul", "paul", UUID.randomUUID().toString(), "Someone", "Loul", 30, null);
 		}
-		
+**/
 		//Test Karma
 		nbTests++;
 		nbErreurs += TestsAddMember.addMemberOKTest(sn, "Jean", "jean", "CooliBoy", null);
@@ -70,25 +70,21 @@ public class TestSocialNetwork {
 		nbTests++;
 		nbErreurs += TestsAddItemBook.addItemBookOKTest(sn, "Jean", "jean", "Epingle", "fiction", "Yayo", 3, null);
 		nbTests++;
-		nbErreurs += TestsAddItemBook.addItemBookOKTest(sn, "Jean", "jean", "Punaise", "fiction", "Yayo", 3, null);
-		nbTests++;
 		nbErreurs += TestsAddItemFilm.addItemFilmOKTest(sn, "Jean", "jean", "Ciseaux", "fiction", "Yayo", "Youhou", 3, null);
 		
-		//JEAN USER REVIEWS 3 BOOKS, KARMA SHOULD BE EQUAL TO (1.2+4.3+1.5)/3=2.3
+		//JEAN USER REVIEWS 2 ITEMS
 		nbTests++;
 		nbErreurs += TestsReviewItemBook.reviewItemBookOKTest (sn, "Jean", "jean", "Epingle", 1.2f, "Un commentaire",null);
 		nbTests++;
-		nbErreurs += TestsReviewItemBook.reviewItemBookOKTest (sn, "Jean", "jean", "Punaise", 4.3f, "Un commentaire",null);
-		nbTests++;
 		nbErreurs += TestsReviewItemFilm.reviewItemFilmOKTest (sn, "Jean", "jean", "Ciseaux", 1.5f, "Un commentaire",null);
 
-		//BOB REVIEWS 2 BOOKS, KARMA SHOULD BE EQUAL TO (2+4.7)/2=3.35
+		//BOB REVIEWS 2 ITEMS
 		nbTests++;
 		nbErreurs += TestsReviewItemBook.reviewItemBookOKTest (sn, "Bob", "boba", "Epingle", 2, "Un commentaire",null);
 		nbTests++;
-		nbErreurs += TestsReviewItemBook.reviewItemBookOKTest (sn, "Bob", "boba", "Punaise", 4.7f, "Un commentaire",null);
+		nbErreurs += TestsReviewItemFilm.reviewItemFilmOKTest (sn, "Jean", "jean", "Ciseaux", 1.5f, "Un commentaire",null);
 
-		//PATRICK REVIEWS 3 BOOKS, KARMA SHOULD BE EQUAL TO (4.5+4+3.6)/3=4.03
+		//BOB REVIEW JEAN'S OPINION
 		nbTests++;
 		nbErreurs += TestsReviewItemBook.reviewItemBookOKTest (sn, "Patrick", "patrick", "Epingle", 4.5f, "Un commentaire",null);
 		nbTests++;

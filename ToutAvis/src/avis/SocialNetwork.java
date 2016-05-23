@@ -54,6 +54,7 @@ public class SocialNetwork {
 		this.books = new LinkedList <Book>();
 		this.filmReviews = new LinkedList <Review>();
 		this.bookReviews = new LinkedList <Review>();
+		this.opinionReviews = new LinkedList <Review>();
 	}
 
 	/**
@@ -90,10 +91,11 @@ public class SocialNetwork {
 	 */
 	public int nbReviews(String itemType) {
 		if(itemType == "film") {
-			return this.bookReviews.size();
-		} else {
 			return this.filmReviews.size();
-		}
+		} else if(itemType == "book") {
+			return this.bookReviews.size();
+		} else
+			return this.opinionReviews.size();
 	}
 
 	/**
@@ -464,7 +466,7 @@ public class SocialNetwork {
 		int nbReviews = 0;
 		int alreadyReviewed = 0;
 		Book bookToReview = null;
-		float sommeKarmas = 0;
+		//float sommeKarmas = 0;
 		
 		for (Book b : books) { //Parcours les films
 			if(b.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) { //Film trouvé par titre
@@ -479,9 +481,7 @@ public class SocialNetwork {
 						}
 						
 						nbReviews++;
-						float uKarma = getUserKarma(r.pseudo);
-						sommeNote = sommeNote + (r.note * uKarma);
-						sommeKarmas = sommeKarmas + uKarma;
+						sommeNote = sommeNote + r.note;
 					}
 				}
 			}
@@ -493,11 +493,13 @@ public class SocialNetwork {
 		if(alreadyReviewed == 0) { //User didn't review this film
 			bookReviews.add(new Review(pseudo, titre, note, commentaire));
 			nbReviews++;
-			sommeNote = sommeNote + (note * getUserKarma(pseudo));
+			sommeNote = sommeNote + note;
 		}
 		
-		user.karma = getUserKarma(pseudo);
-		bookToReview.noteMoyenne = (sommeNote / (nbReviews+sommeKarmas));
+		bookToReview.noteMoyenne = (sommeNote / nbReviews);
+		
+		updateItemsNote();
+
 		return bookToReview.noteMoyenne;
 	}
 	
@@ -510,8 +512,12 @@ public class SocialNetwork {
 			throw new BadEntry("No value given for password or shorter than 4 characters");
 		}
 		
-		if(date == null || date.trim().length() < 1) {
+		if(titre == null || titre.trim().length() < 1) {
 			throw new BadEntry("No value given for titre or shorter than 1 character");
+		}
+		
+		if(date == null || date.trim().length() < 1) {
+			throw new BadEntry("No value given for date");
 		}
 		
 		if(commentaire == null) {
@@ -549,8 +555,26 @@ public class SocialNetwork {
 			}
 	    }
 		
+		for (Review review : bookReviews) { //Parcours les opinions de film
+			if(review.date.equals(date) && review.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) { //La review est identifiée par comp des dates et du film correspondant
+				opinionToReview = review;
+				for(Review r : opinionReviews) { //Parcours les reviews d'opinion
+					if(opinionToReview.date.equals(r.reviewDate) && review.titre.trim().toLowerCase().equals(titre.trim().toLowerCase())) { //Une review de cette opinion existe
+						if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Une review de cette opinion existe deja par cet user
+							r.note = note;
+							r.commentaire = commentaire;
+							alreadyReviewed = 1;
+						}
+						
+						nbReviews++;
+						sommeNote = sommeNote + r.note;
+					}
+				}
+			}
+	    }
+		
 		if(opinionToReview == null)
-			throw new NotItem("Not opinion title");
+			throw new NotItem("No opinion found");
 		
 		if(alreadyReviewed == 0) { //User didn't review this opinion
 			opinionReviews.add(new Review(pseudo, titre, opinionToReview.date, note, commentaire));
@@ -558,32 +582,108 @@ public class SocialNetwork {
 			sommeNote = sommeNote + note;
 		}
 		
-
+		updateItemsNote();
+		
 		opinionToReview.noteMoyenne = (sommeNote / nbReviews);
 		return opinionToReview.noteMoyenne;
 	}
 	
 	private float getUserKarma(String pseudo) {
 		LinkedList <Review> reviews = new LinkedList <Review>();
-		for(Review r : filmReviews) {
-			if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase()))
-				reviews.add(r);
+		
+		int nOpinionReviews;
+		float nSomme = 0;
+		
+		if(opinionReviews.size() > 0) {
+			for(Review r : filmReviews) { //On cherche les reviews de cet utilisateur sur les films
+				if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Review de cet utilisateur trouvée
+					nOpinionReviews = 0;
+					for(Review or : opinionReviews) { //On cherche les reviews de cette opinion par date et titre
+						if(or.reviewDate == r.date && or.titre == r.titre) {
+							nOpinionReviews++;
+							nSomme = nSomme + or.note;
+						}
+					}
+					
+					r.noteMoyenne = nSomme/nOpinionReviews;
+					reviews.add(r);
+				}
+			}
+			
+			for(Review r : bookReviews) { //On cherche les reviews de cet utilisateur sur les films
+				if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase())) { //Review de cet utilisateur trouvée
+					nOpinionReviews = 0;
+					for(Review or : opinionReviews) { //On cherche les reviews de cette opinion par date et titre
+						if(or.reviewDate == r.date && or.titre == r.titre) {
+							nOpinionReviews++;
+							nSomme = nSomme + or.note;
+						}
+					}
+					
+					r.noteMoyenne = nSomme/nOpinionReviews;
+					reviews.add(r);
+				}
+			}
 		}
 		
-		for(Review r : bookReviews) {
-			if(r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase()))
-				reviews.add(r);
-		}
+		if(reviews.size() > 0) {
+			float nmSomme = 0;
+			
+			for(Review r : reviews) {
+				nmSomme = nmSomme + r.noteMoyenne;
+			}
+			
+			return nmSomme/reviews.size();
+		} else
+			return 1;
+	}
+	
+	private void updateItemsNote() {
+		float nSomme;
+		float kSomme;
+		int nRev;
 		
-		float karma = 0;
-		for(Review r : reviews) {
-			karma = karma + r.note;
+		for(Film f : films) {
+			nSomme = 0;
+			kSomme = 0;
+			nRev = 0;
+			
+			for(Review r : filmReviews) {
+				if(f.titre.trim().toLowerCase().equals(r.titre.trim().toLowerCase())) {
+					nRev++;
+					for(Member m : members) {
+						if(m.pseudo.trim().toLowerCase().equals(r.pseudo.trim().toLowerCase())) {
+							m.karma = getUserKarma(m.pseudo);
+							nSomme = nSomme + (r.note * m.karma);
+							kSomme = kSomme + m.karma;
+						}
+					}	
+				}
+			}
+			
+			f.noteMoyenne = nSomme/(nRev+kSomme);
 		}
-		
-		if(reviews.size() == 1)
-			return karma = 1;
-		else
-			return karma/reviews.size();
+
+		for(Book b : books) {
+			nSomme = 0;
+			kSomme = 0;
+			nRev = 0;
+			
+			for(Review r : bookReviews) {
+				if(b.titre.trim().toLowerCase().equals(r.titre.trim().toLowerCase())) {
+					nRev++;
+					for(Member m : members) {
+						if(m.pseudo.trim().toLowerCase().equals(r.pseudo.trim().toLowerCase())) {
+							m.karma = getUserKarma(m.pseudo);
+							nSomme = nSomme + (r.note * m.karma);
+							kSomme = kSomme + m.karma;
+						}
+					}	
+				}
+			}
+			
+			b.noteMoyenne = nSomme/(nRev+kSomme);
+		}
 	}
 
 	public LinkedList <Review> getFilmReviews(String titre) {
@@ -607,6 +707,39 @@ public class SocialNetwork {
 		
 		return results;
 	}
+	
+	public Review getFilmUserReview(String titre, String pseudo) {
+		Review review = null;
+		
+		for(Review r : filmReviews) {
+			if(r.titre == titre && r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase()))
+				review = r;
+		}
+		
+		return review;
+	}
+	
+	public Review getBookUserReview(String titre, String pseudo) {
+		Review review = null;
+		
+		for(Review r : bookReviews) {
+			if(r.titre == titre && r.pseudo.trim().toLowerCase().equals(pseudo.trim().toLowerCase()))
+				review = r;
+		}
+		
+		return review;
+	}
+	
+	public LinkedList <Review> getOpinionReviews(String titre) {
+		LinkedList <Review> results = new LinkedList <Review>();
+		
+		for(Review r : opinionReviews) {
+			if(r.titre == titre)
+				results.add(r);
+		}
+		
+		return results;
+	}
 
 
 	/**
@@ -615,6 +748,6 @@ public class SocialNetwork {
 	 * @return la chaîne de caractères représentation textuelle du <i>SocialNetwork</i> 
 	 */
 	public String toString() {
-		return "Ce SocialNetwork est constitué de "+this.nbFilms()+" films, "+this.nbBooks()+" livres et "+(this.nbReviews("film")+this.nbReviews("book"))+" opinions données par "+this.nbMembers()+" membres.";
+		return "Ce SocialNetwork est constitué de "+this.nbFilms()+" films, "+this.nbBooks()+" livres et "+(this.nbReviews("film")+this.nbReviews("book")+this.nbReviews("opinion"))+" opinions données par "+this.nbMembers()+" membres.";
 	}
 }
