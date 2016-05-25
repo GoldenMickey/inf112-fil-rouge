@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI verified="false" xmi.version="1.2" timestamp="2016-05-25T20:16:52" xmlns:UML="http://schema.omg.org/spec/UML/1.3">
+ <XMI.header>
+  <XMI.documentation>
+   <XMI.exporter>umbrello uml modeller http://umbrello.kde.org</XMI.exporter>
+   <XMI.exporterVersion>1.6.4</XMI.exporterVersion>
+   <XMI.exporterEncoding>UnicodeUTF8</XMI.exporterEncoding>
+  </XMI.documentation>
+  <XMI.metamodel xmi.version="1.3" href="UML.xml" xmi.name="UML"/>
+ </XMI.header>
+ <XMI.content>
+  <UML:Model isSpecification="false" isAbstract="false" isLeaf="false" xmi.id="m1" isRoot="false" name="Modèle UML">
+   <UML:Namespace.ownedElement>
+    <UML:Stereotype visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="folder" name="folder"/>
+    <UML:Stereotype visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="datatype" name="datatype"/>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Logical View" name="Logical View">
+     <UML:Namespace.ownedElement>
+      <UML:Package stereotype="folder" visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Datatypes" name="Datatypes">
+       <UML:Namespace.ownedElement>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="FkLMXZFZYNp2" name="int"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="g6rQgHSZq27m" name="char"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="8kbvwXKCGeYn" name="bool"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="DnNj8AlmHcDv" name="float"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="sfUigcSmK4hG" name="double"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Z0Spc1bpmwWv" name="short"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="6HhLssEkWjQC" name="long"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="JtydvetUcKIE" name="unsigned int"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Jr15nXyrmeBe" name="unsigned short"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="WPM06lCPc90X" name="unsigned long"/>
+        <UML:DataType stereotype="datatype" visibility="public" isSpecification="false" namespace="Datatypes" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="lszLAHXT6WWt" name="string"/>
+       </UML:Namespace.ownedElement>
+      </UML:Package>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Von7vmeecczm" name="SocialNetwork"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="SFvkzXAVJvcF" name="Membre"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="yWPA4CUXRNFR" name="Book"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="9DJURzqPTEYY" name="Review"/>
+      <UML:Class visibility="public" isSpecification="false" namespace="Logical View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="H7XoLfis3r1b" name="Acteur du système"/>
+     </UML:Namespace.ownedElement>
+     <XMI.extension xmi.extender="umbrello">
+      <diagrams>
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="0" showpackage="1" showpubliconly="0" showstereotype="1" name="Diagramme de classes" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="0" canvaswidth="0" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" usefillcolor="1" fillcolor="#ffff00" zoom="100" xmi.id="vbaax6croEwP" documentation="" showscope="1" snapgrid="0" showatts="1" type="1">
+        <widgets/>
+        <messages/>
+        <associations/>
+       </diagram>
+       <diagram showopsig="1" linecolor="#ff0000" snapx="25" showattribassocs="1" snapy="25" linewidth="0" showattsig="1" textcolor="#000000" isopen="1" showpackage="1" showpubliconly="0" showstereotype="1" name="Diagramme de séquences - reviewOpinion" font="Sans Serif,9,-1,0,50,0,0,0,0,0" canvasheight="528" canvaswidth="1032,45458984375" localid="-1" snapcsgrid="0" showgrid="0" showops="1" griddotcolor="#d3d3d3" backgroundcolor="#ffffff" autoincrementsequence="1" usefillcolor="1" fillcolor="#ffff00" zoom="121" xmi.id="1Vjn7uQdJmeQ" documentation="" showscope="1" snapgrid="0" showatts="1" type="3">
+        <widgets>
+         <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-1166,942138671875" decon="0" showstereotype="1" y="0" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="tWFy2jr3CYpJ" width="107" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="Von7vmeecczm" height="24" drawasactor="0"/>
+         <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-932,3636474609375" decon="0" showstereotype="1" y="80" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="fFtHrr1iLEgO" width="71" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="SFvkzXAVJvcF" height="24" drawasactor="0"/>
+         <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-819,1818237304688" decon="0" showstereotype="1" y="80" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="uNuDIWQwlKBa" width="57" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="yWPA4CUXRNFR" height="24" drawasactor="0"/>
+         <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-741,7437744140625" decon="0" showstereotype="1" y="80" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="Q03sNIHHfBSv" width="64" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="9DJURzqPTEYY" height="24" drawasactor="0"/>
+         <objectwidget linecolor="none" usesdiagramfillcolor="1" linewidth="0" textcolor="#000000" usesdiagramusefillcolor="1" x="-1710,198364257812" decon="0" showstereotype="1" y="80" font="Sans Serif,9,-1,0,50,0,1,0,0,0" localid="S4oxvQco3csx" width="135" isinstance="0" multipleinstance="0" usefillcolor="1" fillcolor="none" xmi.id="H7XoLfis3r1b" height="24" drawasactor="0"/>
+        </widgets>
+        <messages>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="tWFy2jr3CYpJ" textid="xdHx9dLJhYWa" operation="addMember(&quot;Paul&quot;, &quot;paul&quot;, &quot;lecteur passioné&quot;)" linewidth="none" seqnum="1" textcolor="none" usesdiagramusefillcolor="1" x="-1642" showstereotype="1" y="129,611572265625" widgetaid="S4oxvQco3csx" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="Ob5lJx1a2WMN" width="537" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="B4FDvFmNHYIC" height="50" sequencemessagetype="1000">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1637" showstereotype="1" y="111" text="addMember(&quot;Paul&quot;, &quot;paul&quot;, &quot;lecteur passioné&quot;)" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="yv1zVtxrS0cj" pretext="" role="704" width="302" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="xdHx9dLJhYWa" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="fFtHrr1iLEgO" textid="TPMac8AhmdBR" operation="Ajout d'un membre" linewidth="none" seqnum="2" textcolor="none" usesdiagramusefillcolor="1" x="-1112" showstereotype="1" y="154,8760375976562" widgetaid="tWFy2jr3CYpJ" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="lGv3oEFm7Elc" width="215" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="5gTVh5EcgVYn" height="8" sequencemessagetype="1001">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1096" showstereotype="1" y="136" text="Ajout d'un membre" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="8r6nPaL9oHCc" pretext="" role="704" width="139" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="TPMac8AhmdBR" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="tWFy2jr3CYpJ" textid="OFHpR4b9DXic" operation="addItemBook(&quot;Paul&quot;, &quot;paul&quot;, &quot;Good book&quot;, &quot;genre&quot;, &quot;auteur&quot;, nbPages) )" linewidth="none" seqnum="3" textcolor="none" usesdiagramusefillcolor="1" x="-1642" showstereotype="1" y="208" widgetaid="S4oxvQco3csx" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="gP2Kva71RCpo" width="537" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="kAxZP79sXWQ9" height="50" sequencemessagetype="1000">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1637" showstereotype="1" y="190" text="addItemBook(&quot;Paul&quot;, &quot;paul&quot;, &quot;Good book&quot;, &quot;genre&quot;, &quot;auteur&quot;, nbPages) )" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="caoOBzorNq9I" pretext="" role="704" width="454" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="OFHpR4b9DXic" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="uNuDIWQwlKBa" textid="7IIZNfDOngnm" operation="Ajout d'un book &quot;Good book&quot;" linewidth="none" seqnum="4" textcolor="none" usesdiagramusefillcolor="1" x="-1112" showstereotype="1" y="228,7933959960938" widgetaid="tWFy2jr3CYpJ" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="esT9OtGyS5Md" width="321" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="2AVPycfMrx9I" height="8" sequencemessagetype="1001">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1085" showstereotype="1" y="210" text="Ajout d'un book &quot;Good book&quot;" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="zlSCG8nuyG4K" pretext="" role="704" width="197" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="7IIZNfDOngnm" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="tWFy2jr3CYpJ" textid="5wD4klJh6Tdh" operation="reviewItemBook(&quot;Paul&quot;, &quot;paul&quot;, &quot;Good Book&quot;, 4.3, &quot;C'est un very good book !&quot;)" linewidth="none" seqnum="5" textcolor="none" usesdiagramusefillcolor="1" x="-1642" showstereotype="1" y="292,7851257324219" widgetaid="S4oxvQco3csx" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="IT8AOGQN1qaH" width="537" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="xN9vbBGiUYGp" height="76" sequencemessagetype="1000">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1637" showstereotype="1" y="274" text="reviewItemBook(&quot;Paul&quot;, &quot;paul&quot;, &quot;Good Book&quot;, 4.3, &quot;C'est un very good book !&quot;)" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="BTDz71jNSpXq" pretext="" role="704" width="494" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="5wD4klJh6Tdh" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="Q03sNIHHfBSv" textid="3ap6hNEocmKj" operation="Ajout d'une review de &quot;Good book&quot;" linewidth="none" seqnum="6" textcolor="none" usesdiagramusefillcolor="1" x="-1112" showstereotype="1" y="310,611572265625" widgetaid="tWFy2jr3CYpJ" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="crO6Pcub37YA" width="402" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="6HXY63MCxaEh" height="8" sequencemessagetype="1001">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1024" showstereotype="1" y="292" text="Ajout d'une review de &quot;Good book&quot;" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="JYNQ105brRiE" pretext="" role="704" width="234" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="3ap6hNEocmKj" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="uNuDIWQwlKBa" textid="slCdthwFSaYL" operation="Mise à jour du book &quot;Good book&quot;" linewidth="none" seqnum="7" textcolor="none" usesdiagramusefillcolor="1" x="-1112" showstereotype="1" y="340,8264465332031" widgetaid="tWFy2jr3CYpJ" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="ZNT3y1Cxn8XL" width="321" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="OneJvhV67BwM" height="8" sequencemessagetype="1001">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1046" showstereotype="1" y="322" text="Mise à jour du book &quot;Good book&quot;" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="mNMN2vOZIraG" pretext="" role="704" width="220" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="slCdthwFSaYL" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="tWFy2jr3CYpJ" textid="m8G43SbpjSPy" operation="reviewOpinion(&quot;Patou&quot;, &quot;patou&quot;, &quot;Good book&quot;, dateOpinion, 3.2, &quot;Cool opinion&quot;)" linewidth="none" seqnum="8" textcolor="none" usesdiagramusefillcolor="1" x="-1642" showstereotype="1" y="399,0330505371094" widgetaid="S4oxvQco3csx" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="Wdmc3KdJIvDY" width="537" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="oHtZG28Qjo5O" height="109" sequencemessagetype="1000">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1637" showstereotype="1" y="381" text="reviewOpinion(&quot;Patou&quot;, &quot;patou&quot;, &quot;Good book&quot;, dateOpinion, 3.2, &quot;Cool opinion&quot;)" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="fgU1OIisuUVx" pretext="" role="704" width="500" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="m8G43SbpjSPy" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="Q03sNIHHfBSv" textid="CEtIFqjXU3jd" operation="Ajout d'un review de l'opinion sur le book &quot;Good book&quot;" linewidth="none" seqnum="9" textcolor="none" usesdiagramusefillcolor="1" x="-1112" showstereotype="1" y="415,8264465332031" widgetaid="tWFy2jr3CYpJ" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="VVMCHPZx53wR" width="402" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="KeKC9p9txOyz" height="8" sequencemessagetype="1001">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1079" showstereotype="1" y="397" text="Ajout d'un review de l'opinion sur le book &quot;Good book&quot;" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="qZoXzBVUhpfy" pretext="" role="704" width="351" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="CEtIFqjXU3jd" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="fFtHrr1iLEgO" textid="8Wu62V3lbV9W" operation="Mise à jour du karma de Paul" linewidth="none" seqnum="10" textcolor="none" usesdiagramusefillcolor="1" x="-1112" showstereotype="1" y="450,942138671875" widgetaid="tWFy2jr3CYpJ" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="qrXoFTl50Xcz" width="215" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="j6SOv5M8JEOW" height="8" sequencemessagetype="1001">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1107" showstereotype="1" y="432" text="Mise à jour du karma de Paul" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="452Y9lAzcflp" pretext="" role="704" width="205" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="8Wu62V3lbV9W" height="18"/>
+         </messagewidget>
+         <messagewidget linecolor="none" usesdiagramfillcolor="1" widgetbid="uNuDIWQwlKBa" textid="ZY9dwPq3pzls" operation="Mise à jour de la note de &quot;Good book&quot;" linewidth="none" seqnum="11" textcolor="none" usesdiagramusefillcolor="1" x="-1112" showstereotype="1" y="483,8264465332031" widgetaid="tWFy2jr3CYpJ" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="aTcrh0Mj4OID" width="321" isinstance="0" usefillcolor="1" fillcolor="none" xmi.id="7QAi5uXBOSHQ" height="8" sequencemessagetype="1001">
+          <floatingtext linecolor="none" usesdiagramfillcolor="1" linewidth="none" textcolor="none" usesdiagramusefillcolor="1" x="-1078" showstereotype="1" y="465" text="Mise à jour de la note de &quot;Good book&quot;" font="Sans Serif,9,-1,0,50,0,0,0,0,0" localid="vI9WoG0MkbCP" pretext="" role="704" width="259" isinstance="0" posttext="" usefillcolor="1" fillcolor="none" xmi.id="ZY9dwPq3pzls" height="18"/>
+         </messagewidget>
+        </messages>
+        <associations/>
+       </diagram>
+      </diagrams>
+     </XMI.extension>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Use Case View" name="Use Case View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Component View" name="Component View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Deployment View" name="Deployment View">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+    <UML:Model stereotype="folder" visibility="public" isSpecification="false" namespace="m1" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="Entity Relationship Model" name="Entity Relationship Model">
+     <UML:Namespace.ownedElement/>
+    </UML:Model>
+   </UML:Namespace.ownedElement>
+  </UML:Model>
+ </XMI.content>
+ <XMI.extensions xmi.extender="umbrello">
+  <docsettings viewid="1Vjn7uQdJmeQ" uniqueid="ZY9dwPq3pzls" documentation=""/>
+  <listview>
+   <listitem open="1" type="800" id="Views">
+    <listitem open="1" type="836" id="Entity Relationship Model"/>
+    <listitem open="1" type="802" id="Use Case View"/>
+    <listitem open="1" type="821" id="Component View"/>
+    <listitem open="1" type="827" id="Deployment View"/>
+    <listitem open="1" type="801" id="Logical View">
+     <listitem open="1" type="813" id="H7XoLfis3r1b"/>
+     <listitem open="1" type="813" id="yWPA4CUXRNFR"/>
+     <listitem open="0" type="807" id="vbaax6croEwP" label="Diagramme de classes"/>
+     <listitem open="0" type="810" id="1Vjn7uQdJmeQ" label="Diagramme de séquences - reviewOpinion"/>
+     <listitem open="1" type="813" id="SFvkzXAVJvcF"/>
+     <listitem open="1" type="813" id="9DJURzqPTEYY"/>
+     <listitem open="1" type="813" id="Von7vmeecczm"/>
+     <listitem open="0" type="830" id="Datatypes">
+      <listitem open="1" type="829" id="8kbvwXKCGeYn"/>
+      <listitem open="1" type="829" id="g6rQgHSZq27m"/>
+      <listitem open="1" type="829" id="sfUigcSmK4hG"/>
+      <listitem open="1" type="829" id="DnNj8AlmHcDv"/>
+      <listitem open="1" type="829" id="FkLMXZFZYNp2"/>
+      <listitem open="1" type="829" id="6HhLssEkWjQC"/>
+      <listitem open="1" type="829" id="Z0Spc1bpmwWv"/>
+      <listitem open="1" type="829" id="lszLAHXT6WWt"/>
+      <listitem open="1" type="829" id="JtydvetUcKIE"/>
+      <listitem open="1" type="829" id="WPM06lCPc90X"/>
+      <listitem open="1" type="829" id="Jr15nXyrmeBe"/>
+     </listitem>
+    </listitem>
+   </listitem>
+  </listview>
+  <codegeneration>
+   <codegenerator language="C++"/>
+  </codegeneration>
+ </XMI.extensions>
+</XMI>
