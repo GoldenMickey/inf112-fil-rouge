@@ -45,7 +45,7 @@ public class SocialNetwork {
 	LinkedList <Review> opinionReviews;
 
 	/**
-	 * constructeur de <i>SocialNetwok</i> 
+	 * Constructeur de <i>SocialNetwok</i> 
 	 * 
 	 */
 	public SocialNetwork() {
@@ -85,7 +85,9 @@ public class SocialNetwork {
 	}
 
 	/**
-	 * Obtenir le nombre de livres du <i>SocialNetwork</i>
+	 * Obtenir le nombre les review d'un film, d'un livre ou d'une opinion du <i>SocialNetwork</i>
+	 * 
+	 * @param itemType Le type des items auquels les reviews sont attachées.
 	 * 
 	 * @return le nombre de livres
 	 */
@@ -294,9 +296,9 @@ public class SocialNetwork {
 	 * 
 	 * @param nom son titre (eg. titre d'un film, d'un livre, etc.)
 	 * 
-	 * @throws BadEntry : si le titre n'est pas instancié ou a moins de 1 caractère autre que des espaces.  </li>
+	 * @throws BadEntry : si le titre n'est pas instancié ou a moins de 1 caractère autre que des espaces.
 	 * 
-	 * @return LinkedList <String> : la liste des représentations textuelles de tous les items ayant ce titre 
+	 * @return la liste des représentations textuelles de tous les items ayant ce titre 
 	 * Cette représentation contiendra la note de l'item s'il a été noté.
 	 * (une liste vide si aucun item ne correspond) 
 	 */
