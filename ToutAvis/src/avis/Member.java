@@ -1,65 +1,33 @@
 package avis;
 
+/** 
+ * @author F. Portecop, L. Halley
+ * @date Mai 2016
+ * @version V1.0
+ */
+
+/** 
+ * <p>
+ * <b>Class Member, used to represent a user of a SocialNetwork.</b>
+ * </p>
+ */
 public class Member {
-	/**
-	 * @uml.property  name="pseudo"
-	 */
-	public String pseudo;
-
-	/**
-	 * @uml.property  name="password"
-	 */
-	public String password;
-
-	/**
-	 * @uml.property  name="profil"
-	 */
-	public String profil;
-
-	/**
-	 * @uml.property  name="karma"
-	 */
-	public float karma;
+	public static String pseudo;
+	public static String password;
+	public static String profil;
+	public static float karma;
 	
-	
-///////////////////////////////////////////////////////////////////////////////////////////
 	/**
+	 * Member constructor
+	 * 
+	 * @param pseudo the pseudo of the member.
+	 * @param password the password of the member.
+	 * @param profil the profil of the member.
 	 */
 	public Member(String pseudo, String password, String profil){
 		this.pseudo = pseudo;
 		this.password = password;
 		this.profil = profil;
 		this.karma = 1;
-	}
-
-			
-	/**
-	 */
-	public String toString(){
-		return "";	
-	}
-
-	/**
-	 * @uml.property  name="socialNetwork"
-	 * @uml.associationEnd  multiplicity="(1 1)" inverse="member:SocialNetwork"
-	 */
-	private SocialNetwork socialNetwork = null;
-
-	/**
-	 * Getter of the property <tt>socialNetwork</tt>
-	 * @return  Returns the socialNetwork.
-	 * @uml.property  name="socialNetwork"
-	 */
-	public SocialNetwork getSocialNetwork() {
-		return socialNetwork;
-	}
-
-	/**
-	 * Setter of the property <tt>socialNetwork</tt>
-	 * @param socialNetwork  The socialNetwork to set.
-	 * @uml.property  name="socialNetwork"
-	 */
-	public void setSocialNetwork(SocialNetwork socialNetwork) {
-		this.socialNetwork = socialNetwork;
 	}
 }

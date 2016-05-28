@@ -12,7 +12,7 @@ import exception.NotMember;
 
 /** 
  * @author F. Portecop, L. Halley
- * @date mars 2015
+ * @date Mai 2016
  * @version V1.0
  */
 

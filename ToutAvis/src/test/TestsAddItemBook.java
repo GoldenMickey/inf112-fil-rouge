@@ -8,8 +8,8 @@ import exception.MemberAlreadyExists;
 import exception.NotMember;
 
 /** 
- * @author B. Prou, E. Cousin
- * @date mars 2015
+ * @author F. Portecop, L. Halley
+ * @date Mai 2016
  * @version V1.0
  */
 

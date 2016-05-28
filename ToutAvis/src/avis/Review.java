@@ -5,8 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /** 
+ * @author F. Portecop, L. Halley
+ * @date Mai 2016
+ * @version V1.0
+ */
+
+/** 
  * <p>
- * <b>Class Review, utilisée pour représentér une opinion.</b>
+ * <b>Class Review, used to represent an opinion.</b>
  * </p>
  */
 public class Review {
@@ -20,12 +26,12 @@ public class Review {
 	public float noteMoyenne = 0.0f;
 	
 	/**
-	 * Constructeur d'un opinion d'item
+	 * Item opinion constructor
 	 * 
-	 * @param pseudo Le pseudo de l'utilisateur qui émet une opinion.
-	 * @param titre Le titre de l'item évalué.
-	 * @param note La note attribuée à l'item.
-	 * @param commentaire Un commentaire sur l'item.
+	 * @param pseudo the pseudo of the reviewing.
+	 * @param titre the title of the reviewed item.
+	 * @param note the mark.
+	 * @param commentaire a comment about the item.
 	 */
 	public Review(String pseudo, String titre, float note, String commentaire) {
 		this.note = note;
@@ -36,13 +42,13 @@ public class Review {
 	}
 	
 	/**
-	 * Constructeur d'un opinion d'opinion
+	 * Opinion review constructor
 	 * 
-	 * @param pseudo Le pseudo de l'utilisateur qui émet une opinion.
-	 * @param titre Le titre de l'item sur lequel porte l'opinion évaluée.
-	 * @param reviewDate Date de l'opinion évaluée.
-	 * @param note La note attribuée à l'opinion.
-	 * @param commentaire Un commentaire sur l'opinion.
+	 * @param pseudo the pseudo of the reviewing.
+	 * @param titre the title of the reviewed item.
+	 * @param reviewDate the date of the opinion to review.
+	 * @param note the mark.
+	 * @param commentaire a comment about the opinion.
 	 */
 	public Review(String pseudo, String titre, String reviewDate, float note, String commentaire) {
 		this.note = note;
@@ -54,11 +60,14 @@ public class Review {
 	}
 	
 	/**
+	 * Get the description of the opinion
+	 *
+	 * @return a text description of the opinion
 	 */
 	public String toString(){
 		String noteString = "\n";
 		if(this.noteMoyenne > 0.0f && this.noteMoyenne <= 5.0f)
-			noteString = " ; Ce commentaire a été évalué : "+String.format("%.2f", this.noteMoyenne)+"\n";
+			noteString = " ; Cette opinion a été évaluée : "+String.format("%.2f", this.noteMoyenne)+"\n";
 		return "Review de :"+this.pseudo+" sur "+this.titre+", Note : "+this.note+", Commentaire : "+this.commentaire+noteString;
 	}
 }

@@ -5,10 +5,9 @@ import java.util.UUID;
 
 import avis.SocialNetwork;
 
-
 /** 
  * @author F. Portecop, L. Halley
- * @date mars 2015
+ * @date Mai 2016
  * @version V1.0
  */
 
@@ -43,7 +42,7 @@ public class TestSocialNetwork {
 
 		nbTests++;
 		nbErreurs += TestsAddItemBook.addItemBookOKTest(sn, "Richard", "richard", "Man of the year", "fiction", "Florence Portecop", 40, "0.4");
-/**
+
 		// Boucle rendement - Ajout d'utilisateurs
 		for(int i=0; i<550; i++) {
 			nbTests++;
@@ -58,7 +57,7 @@ public class TestSocialNetwork {
 			else
 				nbErreurs += TestsAddItemBook.addItemBookOKTest(sn, "Paul", "paul", UUID.randomUUID().toString(), "Someone", "Loul", 30, null);
 		}
-**/
+		
 		//Test Karma
 		nbTests++;
 		nbErreurs += TestsAddMember.addMemberOKTest(sn, "Jean", "jean", "CooliBoy", null);

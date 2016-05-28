@@ -45,7 +45,7 @@ public class SocialNetwork {
 	LinkedList <Review> opinionReviews;
 
 	/**
-	 * Constructeur de <i>SocialNetwok</i> 
+	 * <i>SocialNetwok</i> Constructor
 	 * 
 	 */
 	public SocialNetwork() {
@@ -58,38 +58,38 @@ public class SocialNetwork {
 	}
 
 	/**
-	 * Obtenir le nombre de membres du <i>SocialNetwork</i>
+	 * Get the number of members of the <i>SocialNetwork</i>
 	 * 
-	 * @return le nombre de membres
+	 * @return The number of members
 	 */
 	public int nbMembers() {
 		return this.members.size();
 	}
 
 	/**
-	 * Obtenir le nombre de films du <i>SocialNetwork</i>
+	 * Get the number of films of the <i>SocialNetwork</i>
 	 * 
-	 * @return le nombre de films
+	 * @return The number of films
 	 */
 	public int nbFilms() {
 		return this.films.size();
 	}
 
 	/**
-	 * Obtenir le nombre de livres du <i>SocialNetwork</i>
+	 * Get the number of books of the <i>SocialNetwork</i>
 	 * 
-	 * @return le nombre de livres
+	 * @return The number of books
 	 */
 	public int nbBooks() {
 		return this.books.size();
 	}
 
 	/**
-	 * Obtenir le nombre les review d'un film, d'un livre ou d'une opinion du <i>SocialNetwork</i>
+	 * Get the number of reviews concerning films, books or opinions of the <i>SocialNetwork</i>
 	 * 
-	 * @param itemType Le type des items auquels les reviews sont attachées.
+	 * @param itemType The type of items attached to the reviews.
 	 * 
-	 * @return le nombre de livres
+	 * @return The number of reviews
 	 */
 	public int nbReviews(String itemType) {
 		if(itemType == "film") {
@@ -505,6 +505,32 @@ public class SocialNetwork {
 		return bookToReview.noteMoyenne;
 	}
 	
+
+	/**
+	 * Emit a review about an opinion.
+	 * Add the review to the opinion of the <i>SocialNetwork</i> 
+	 * If the member already reviewed the opinion, his review will be updated.
+	 * 
+	 * @param pseudo pseudo of the reviewing member
+	 * @param password password of the reviewing member
+	 * @param titre title of the opinion to review
+	 * @param date the date of the opinion to review
+	 * @param note the mark given to the opinion to review
+	 * @param commentaire a comment about the opinion to review
+	 * 
+	 * @throws BadEntry :
+	 * <ul>
+	 *  <li>  if the pseudo is not instantiated or is shorter than 1 character other than blank spaces.  </li>
+	 *  <li>  if the password is not instantiated or is shorter than 4 characters other than leadings or trailing blanks. </li>
+	 *  <li>  if the title is not instantiated or is shorter than 1 character other than blank spaces.  </li>
+	 *  <li>  if the mark is inferior to zero or superior to five. </li>
+	 *  <li>  if the comment is not instantiated. </li>
+	 * </ul><br>       
+	 * @throws NotMember : If the given pseudo and password don't match a member.
+	 * @throws NotItem : If the title and/or the date doesn't match an opinion.
+	 * 
+	 * @return the average mark of this opinion
+	 */
 	public float reviewOpinion(String pseudo, String password, String date, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
 		if(pseudo == null || pseudo.trim().length() < 1) {
 			throw new BadEntry("No value given for pseudo or shorter than 1 character");
@@ -688,6 +714,12 @@ public class SocialNetwork {
 		}
 	}
 
+	/**
+	 * Get the reviews of a film of the <i>SocialNetwork</i> 
+	 * @param titre the title of the film
+	 * 
+	 * @return a list of the reviews concerning the film (empty if there are no reviews)
+	 */
 	public LinkedList <Review> getFilmReviews(String titre) {
 		LinkedList <Review> results = new LinkedList <Review>();
 		
@@ -698,7 +730,13 @@ public class SocialNetwork {
 		
 		return results;
 	}
-	
+
+	/**
+	 * Get the reviews of a book of the <i>SocialNetwork</i> 
+	 * @param titre the title of the book
+	 * 
+	 * @return a list of the reviews concerning the book (empty if there are no reviews)
+	 */
 	public LinkedList <Review> getBookReviews(String titre) {
 		LinkedList <Review> results = new LinkedList <Review>();
 		
@@ -709,7 +747,31 @@ public class SocialNetwork {
 		
 		return results;
 	}
-	
+
+	/**
+	 * Get the reviews of an opinion of the <i>SocialNetwork</i> 
+	 * @param titre the title of the opinion
+	 * 
+	 * @return a list of the reviews concerning the opinion (empty if there are no reviews)
+	 */
+	public LinkedList <Review> getOpinionReviews(String titre) {
+		LinkedList <Review> results = new LinkedList <Review>();
+		
+		for(Review r : opinionReviews) {
+			if(r.titre == titre)
+				results.add(r);
+		}
+		
+		return results;
+	}
+
+	/**
+	 * Get the review emitted by a member on a film <i>SocialNetwork</i> 
+	 * @param titre the title of a film 
+	 * @param pseudo the pseudo of a member
+	 * 
+	 * @return a list of the reviews emitted by a member concerning a film (empty if there are no reviews)
+	 */
 	public Review getFilmUserReview(String titre, String pseudo) {
 		Review review = null;
 		
@@ -720,7 +782,14 @@ public class SocialNetwork {
 		
 		return review;
 	}
-	
+
+	/**
+	 * Get the review emitted by a member on a book <i>SocialNetwork</i> 
+	 * @param titre the title of a book 
+	 * @param pseudo the pseudo of a member
+	 * 
+	 * @return a list of the reviews emitted by a member concerning a book (empty if there are no reviews)
+	 */
 	public Review getBookUserReview(String titre, String pseudo) {
 		Review review = null;
 		
@@ -730,17 +799,6 @@ public class SocialNetwork {
 		}
 		
 		return review;
-	}
-	
-	public LinkedList <Review> getOpinionReviews(String titre) {
-		LinkedList <Review> results = new LinkedList <Review>();
-		
-		for(Review r : opinionReviews) {
-			if(r.titre == titre)
-				results.add(r);
-		}
-		
-		return results;
 	}
 
 
